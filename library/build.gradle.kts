@@ -1,37 +1,36 @@
-import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  id(Android.LibraryPluginId)
-  kotlin(Kotlin.AndroidPluginId)
-  id("common-android-plugin")
-  id(MavenPublish.PluginId)
-}
-
-android {
-  tasks.withType<KotlinCompile> {
-    kotlinOptions {
-      freeCompilerArgs = freeCompilerArgs + "-Xexplicit-api=strict" + "-Xcontext-receivers"
-    }
-  }
+    id("plugins.compose-library")
 }
 
 dependencies {
-  implementation(Compose.Ui)
-  implementation(Compose.UiTooling)
-  implementation(Compose.AccompanistPager)
-  implementation(Compose.Foundation)
-  implementation(Compose.FoundationLayout)
-  implementation(Compose.Material)
-  implementation(Timber.Core)
+    accompanist()
+    coroutines()
+    material()
 
-  testImplementation(Kotest.Assertions)
-  testImplementation(Kotest.RunnerJunit5)
+    testImplementation(Kotest.Assertions)
+    testImplementation(Kotest.RunnerJunit5)
+    testImplementation(Kotlin.Reflect)
 }
 
-plugins.withId("com.vanniktech.maven.publish") {
-  mavenPublish {
-    sonatypeHost = SonatypeHost.S01
-    releaseSigningEnabled = true
-  }
+android {
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = freeCompilerArgs + "-Xexplicit-api=strict"
+        }
+    }
+
+    namespace = "com.boguszpawlowski.composecalendar"
+}
+
+object Kotest {
+    const val Version = "5.4.1"
+    const val RunnerJunit5 = "io.kotest:kotest-runner-junit5-jvm:$Version"
+    const val Assertions = "io.kotest:kotest-assertions-core-jvm:$Version"
+}
+
+object Kotlin {
+    const val Version = "1.7.21"
+    const val Reflect = "org.jetbrains.kotlin:kotlin-reflect:$Version"
 }
