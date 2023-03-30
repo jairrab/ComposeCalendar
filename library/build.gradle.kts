@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("plugins.compose-library")
+    id("plugins.android-compose-library")
 }
 
 dependencies {
