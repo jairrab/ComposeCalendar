@@ -4,8 +4,10 @@ plugins {
     id("plugins.android-compose-library")
 }
 
+private val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
+
 dependencies {
-    accompanist()
+    accompanist(libs)
     coroutines()
     material()
 
