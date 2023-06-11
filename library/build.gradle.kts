@@ -9,7 +9,7 @@ private val libs = extensions.getByType<VersionCatalogsExtension>().named("libs"
 dependencies {
     accompanist(libs)
     coroutines()
-    material()
+    material(libs)
 
     testImplementation(Kotest.Assertions)
     testImplementation(Kotest.RunnerJunit5)
