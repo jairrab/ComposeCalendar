@@ -10,8 +10,8 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,7 +40,7 @@ public fun DefaultMonthHeader(
       onClick = { monthState.currentMonth = monthState.currentMonth.minusMonths(1) }
     ) {
       Image(
-        imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
+        imageVector = Icons.Default.KeyboardArrowLeft,
         colorFilter = ColorFilter.tint(MaterialTheme.colors.onSurface),
         contentDescription = "Previous",
       )
@@ -60,7 +60,7 @@ public fun DefaultMonthHeader(
       onClick = { monthState.currentMonth = monthState.currentMonth.plusMonths(1) }
     ) {
       Image(
-        imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+        imageVector = Icons.Default.KeyboardArrowRight,
         colorFilter = ColorFilter.tint(MaterialTheme.colors.onSurface),
         contentDescription = "Next",
       )
