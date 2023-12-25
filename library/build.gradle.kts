@@ -4,6 +4,16 @@ plugins {
     id("plugins.android-compose-library")
 }
 
+android {
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = freeCompilerArgs + "-Xexplicit-api=strict"
+        }
+    }
+
+    namespace = "com.boguszpawlowski.composecalendar"
+}
+
 private val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
 dependencies {
@@ -14,16 +24,6 @@ dependencies {
     testImplementation(Kotest.Assertions)
     testImplementation(Kotest.RunnerJunit5)
     testImplementation(Kotlin.Reflect)
-}
-
-android {
-    tasks.withType<KotlinCompile> {
-        kotlinOptions {
-            freeCompilerArgs = freeCompilerArgs + "-Xexplicit-api=strict"
-        }
-    }
-
-    namespace = "com.boguszpawlowski.composecalendar"
 }
 
 object Kotest {
