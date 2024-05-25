@@ -1,14 +1,10 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     id("plugins.android-compose-library")
 }
 
 android {
-    tasks.withType<KotlinCompile> {
-        kotlinOptions {
-            freeCompilerArgs = freeCompilerArgs + "-Xexplicit-api=strict"
-        }
+    kotlinOptions {
+        freeCompilerArgs += "-Xexplicit-api=strict"
     }
 
     namespace = "com.boguszpawlowski.composecalendar"
