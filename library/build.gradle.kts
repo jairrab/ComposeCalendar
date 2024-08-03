@@ -1,5 +1,9 @@
+import config.accompanist
+import config.coroutines
+import config.material
+
 plugins {
-    id("plugins.android-compose-library")
+    id("compose-library")
 }
 
 android {
