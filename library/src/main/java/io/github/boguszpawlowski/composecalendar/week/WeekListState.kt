@@ -31,13 +31,11 @@ internal class WeekListState(
       moveToWeek(week)
     }.launchIn(coroutineScope)
 
-    with(listState) {
       snapshotFlow { currentlyFirstVisibleMonth }
-        .throttleOnOffset()
-        .onEach { newMonth ->
-          weekState.currentWeek = newMonth
-        }.launchIn(coroutineScope)
-    }
+          .throttleOnOffset(listState)
+          .onEach { newMonth ->
+              weekState.currentWeek = newMonth
+          }.launchIn(coroutineScope)
   }
 
   fun getWeekForPage(index: Int): Week =

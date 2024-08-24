@@ -26,19 +26,17 @@ internal class MonthListState(
     getMonthForPage(listState.firstVisibleItemIndex)
   }
 
-  init {
-    snapshotFlow { monthState.currentMonth }.onEach { month ->
-      moveToMonth(month)
-    }.launchIn(coroutineScope)
-
-    with(listState) {
-      snapshotFlow { currentFirstVisibleMonth }
-        .throttleOnOffset()
-        .onEach { newMonth ->
-          monthState.currentMonth = newMonth
+    init {
+        snapshotFlow { monthState.currentMonth }.onEach { month ->
+            moveToMonth(month)
         }.launchIn(coroutineScope)
+
+        snapshotFlow { currentFirstVisibleMonth }
+            .throttleOnOffset(listState)
+            .onEach { newMonth ->
+                monthState.currentMonth = newMonth
+            }.launchIn(coroutineScope)
     }
-  }
 
   fun getMonthForPage(index: Int): YearMonth =
     initialMonth.plusMonths((index - StartIndex).toLong())
