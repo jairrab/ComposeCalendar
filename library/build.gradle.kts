@@ -7,11 +7,13 @@ plugins {
 }
 
 android {
-    kotlinOptions {
-        freeCompilerArgs += "-Xexplicit-api=strict"
-    }
-
     namespace = "com.boguszpawlowski.composecalendar"
+}
+
+kotlin {
+    compilerOptions {
+        freeCompilerArgs.add("-Xexplicit-api=strict")
+    }
 }
 
 private val libs2 = extensions.getByType<VersionCatalogsExtension>().named("libs")
