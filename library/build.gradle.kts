@@ -14,12 +14,12 @@ android {
     namespace = "com.boguszpawlowski.composecalendar"
 }
 
-private val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
+private val libs2 = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
 dependencies {
-    accompanist(libs)
-    coroutines(libs)
-    material(libs)
+    accompanist(libs2)
+    coroutines(libs2)
+    material(libs2)
 
     testImplementation(Kotest.Assertions)
     testImplementation(Kotest.RunnerJunit5)
