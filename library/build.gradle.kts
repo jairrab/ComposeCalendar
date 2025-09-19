@@ -2,7 +2,7 @@ import config.coroutines
 import config.material
 
 plugins {
-    id("compose-library")
+    id("com.bluecoins.plugins.compose-library")
 }
 
 android {
