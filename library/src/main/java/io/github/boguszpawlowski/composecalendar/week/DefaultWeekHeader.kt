@@ -2,7 +2,7 @@ package io.github.boguszpawlowski.composecalendar.week
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -30,8 +30,8 @@ public fun DefaultWeekHeader(
         textAlign = TextAlign.Center,
         text = dayOfWeek.getDisplayName(SHORT, Locale.getDefault()),
         modifier = modifier
-          .weight(1f)
-          .wrapContentHeight()
+            .weight(1f)
+            .wrapContentHeight()
       )
     }
   }
@@ -48,8 +48,8 @@ public fun DefaultDaysOfWeekHeader(
         textAlign = TextAlign.Center,
         text = dayOfWeek.getDisplayName(SHORT, Locale.getDefault()),
         modifier = modifier
-          .weight(1f)
-          .wrapContentHeight()
+            .weight(1f)
+            .wrapContentHeight()
       )
     }
   }

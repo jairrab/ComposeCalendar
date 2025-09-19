@@ -1,4 +1,3 @@
-import config.accompanist
 import config.coroutines
 import config.material
 
@@ -19,9 +18,9 @@ kotlin {
 private val libs2 = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
 dependencies {
-    accompanist(libs2)
     coroutines(libs2)
     material(libs2)
+    implementation("dev.chrisbanes.snapper:snapper:0.3.0")
 
     testImplementation(Kotest.Assertions)
     testImplementation(Kotest.RunnerJunit5)

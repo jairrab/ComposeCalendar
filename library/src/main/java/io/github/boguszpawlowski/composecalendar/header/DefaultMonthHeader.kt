@@ -6,12 +6,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,43 +27,46 @@ import java.util.Locale
  */
 @Composable
 public fun DefaultMonthHeader(
-  monthState: MonthState,
-  modifier: Modifier = Modifier,
+    monthState: MonthState,
+    modifier: Modifier = Modifier,
 ) {
-  Row(
-    modifier = modifier.fillMaxWidth(),
-    horizontalArrangement = Arrangement.Center,
-    verticalAlignment = Alignment.CenterVertically,
-  ) {
-    IconButton(
-      modifier = Modifier.testTag("Decrement"),
-      onClick = { monthState.currentMonth = monthState.currentMonth.minusMonths(1) }
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
     ) {
-      Image(
-        imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
-        colorFilter = ColorFilter.tint(MaterialTheme.colors.onSurface),
-        contentDescription = "Previous",
-      )
+        IconButton(
+            modifier = Modifier.testTag("Decrement"),
+            onClick = { monthState.currentMonth = monthState.currentMonth.minusMonths(1) },
+        ) {
+            Image(
+                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
+                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurface),
+                contentDescription = "Previous",
+            )
+        }
+        Text(
+            modifier = Modifier.testTag("MonthLabel"),
+            text = monthState.currentMonth.month
+                .getDisplayName(FULL, Locale.getDefault())
+                .lowercase()
+                .replaceFirstChar { it.titlecase() },
+            style = MaterialTheme.typography.headlineSmall,
+        )
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(
+            text = monthState.currentMonth.year.toString(),
+            style = MaterialTheme.typography.headlineSmall,
+        )
+        IconButton(
+            modifier = Modifier.testTag("Increment"),
+            onClick = { monthState.currentMonth = monthState.currentMonth.plusMonths(1) },
+        ) {
+            Image(
+                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurface),
+                contentDescription = "Next",
+            )
+        }
     }
-    Text(
-      modifier = Modifier.testTag("MonthLabel"),
-      text = monthState.currentMonth.month
-        .getDisplayName(FULL, Locale.getDefault())
-        .lowercase()
-        .replaceFirstChar { it.titlecase() },
-      style = MaterialTheme.typography.h4,
-    )
-    Spacer(modifier = Modifier.width(8.dp))
-    Text(text = monthState.currentMonth.year.toString(), style = MaterialTheme.typography.h4)
-    IconButton(
-      modifier = Modifier.testTag("Increment"),
-      onClick = { monthState.currentMonth = monthState.currentMonth.plusMonths(1) }
-    ) {
-      Image(
-        imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-        colorFilter = ColorFilter.tint(MaterialTheme.colors.onSurface),
-        contentDescription = "Next",
-      )
-    }
-  }
 }
