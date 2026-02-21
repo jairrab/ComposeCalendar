@@ -1,3 +1,4 @@
+import com.android.build.api.dsl.LibraryExtension
 import plugins.coroutines
 import plugins.material
 
@@ -5,7 +6,7 @@ plugins {
     id("com.bluecoins.plugins.compose-library")
 }
 
-android {
+extensions.configure<LibraryExtension> {
     namespace = "com.boguszpawlowski.composecalendar"
 }
 

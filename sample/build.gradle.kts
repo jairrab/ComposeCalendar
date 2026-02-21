@@ -8,7 +8,7 @@ plugins {
 
 val commitsCount = Grgit.open(mapOf("dir" to rootDir)).log().size
 
-android {
+extensions.configure<LibraryExtension> {
   defaultConfig {
     versionCode = commitsCount
     versionName = "0.0.1"
