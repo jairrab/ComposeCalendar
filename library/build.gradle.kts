@@ -1,5 +1,5 @@
-import config.coroutines
-import config.material
+import plugins.coroutines
+import plugins.material
 
 plugins {
     id("com.bluecoins.plugins.compose-library")
