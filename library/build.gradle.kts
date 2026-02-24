@@ -1,19 +1,23 @@
 import com.android.build.api.dsl.LibraryExtension
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import plugins.coroutines
 import plugins.material
 
 plugins {
     id("com.bluecoins.plugins.compose-library")
-    id("org.jetbrains.kotlin.android")
 }
 
 extensions.configure<LibraryExtension> {
     namespace = "com.boguszpawlowski.composecalendar"
 }
 
-kotlin {
+tasks.withType<KotlinCompile>().configureEach {
     compilerOptions {
-        freeCompilerArgs.add("-Xexplicit-api=strict")
+        freeCompilerArgs.addAll(
+            listOf(
+                "-Xexplicit-api=strict",
+            ),
+        )
     }
 }
 
