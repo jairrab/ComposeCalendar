@@ -4,6 +4,7 @@ import plugins.material
 
 plugins {
     id("com.bluecoins.plugins.compose-library")
+    id("org.jetbrains.kotlin.android")
 }
 
 extensions.configure<LibraryExtension> {
